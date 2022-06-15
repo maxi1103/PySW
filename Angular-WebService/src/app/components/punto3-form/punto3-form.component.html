@@ -1,0 +1,37 @@
+<app-header></app-header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form >
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Ingrese el precio del Pasaje</label>
+                    <input type="text" class="form-control" id="precio" [(ngModel)]="pasaje.precioPasaje" name="precio" >
+                </div>
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Seleccione la categoria del pasajero</label>
+                    <select class="form-select" name="categoria" id="categoria" [(ngModel)]="pasaje.categoriaPasajero">
+                        <option value="A">Adulto</option>
+                        <option value="J">Jubilado</option>
+                        <option value="M">Menor</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="fecha" class="form-label">Ingrese la fecha de  la compra</label>
+                    <input type="date" class="form-control" id="fecha" [(ngModel)]="pasaje.fechaCompra " name="fecha" >
+                </div>
+                <div class="mb-3">
+                    <label for="pasajero" class="form-label">Selecciona el pasajero</label>
+                    <select class="form-select" name="pasajero" id="pasajero" [(ngModel)]="pasaje.pasajero">
+                        <option *ngFor="let per of pasajeros" [ngValue]="per">{{per.nombre}} {{per.apellido}}</option>
+                      
+                    </select>
+                </div>
+                    <button *ngIf="accion=='new'" class="btn btn-primary" (click)="altaPasaje()">Alta Pasaje</button>
+                    <button *ngIf="accion=='update'"class="btn btn-primary" (click)="actualizarPasaje()">Actualizar Datos</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>

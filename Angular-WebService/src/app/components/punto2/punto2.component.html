@@ -1,0 +1,53 @@
+<app-header></app-header>
+<main>
+<div class="container p-2">
+
+    <div class="row p-3">
+        <div class="col-12 col-md-6 p-4">
+            <div class="mb-3 p-3">
+            <button class="btn btn-primary" (click)="getTransacciones()"> Obtener todos las transsaciones</button>
+            </div>
+            <br>
+            <div class="mb-3 p-3">
+            <label for="moneda" class="form-label">Introduzca moneda a buscar</label>
+            <select id="moneda" class="form-select" aria-label="Default select example " [(ngModel)]="moneda" name="moneda" >
+                <option selected disabled hidden>Seleecione Moneda</option>
+                <option value="USD">USD Dolares EEUU</option>
+                  <option value="ARS">ARS Pesos Argentitos</option>
+                  <option value="EUR">EUR Euros</option>
+                  <option value="BRL">BRL Real Brasileño</option>
+                  <option value="GBP">GBP Libra Esterlina</option>
+              </select>
+            <button class="btn btn-primary p-2" (click)="getTransaccionesMoneda()"> Obtener las transacicones segun moneda</button>
+            </div>
+        </div>
+        <div class="col-12"> 
+            <table class="table table-responsive table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Moneda de Origen</th>
+                    <th scope="col">Cantidad de Origen</th>
+                    <th scope="col">Moneda de Destino</th>
+                    <th scope="col">Cantidad de Destino</th>
+                    <th scope="col">Email Cliente</th>
+                    <th scope="col">Tasa de conversion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let tra of transacciones">
+                    
+                    <td>{{tra.monedaOrigen}}</td>
+                    <td>{{tra.cantidadOrigen}}</td>
+                    <td>{{tra.monedaDestino}}</td>
+                    <td>{{tra.cantidadDestino}}</td>
+                    <td>{{tra.emailCliente}}</td>
+                    <td>{{tra.tasaConversion}}</td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+</main>
+<app-footer></app-footer>

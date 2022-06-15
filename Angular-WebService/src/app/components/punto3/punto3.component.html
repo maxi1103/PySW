@@ -1,0 +1,48 @@
+<app-header></app-header>
+<main>
+    <div class="container p-2">
+        <div class="row p-3">
+            <div class="mb-3">
+                <button class="btn btn-primary" (click)="getPasajes()">Obtener todos los pasajes</button>
+            </div>
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Seleccione la categoria del pasajero a Buscar</label>
+                <select class="form-select" name="categoria" id="categoria" [(ngModel)]="categoria">
+                    <option value="A">Adulto</option>
+                    <option value="J">Jubilado</option>
+                    <option value="M">Menor</option>
+                </select>
+                <button class="btn btn-primary" (click)="getPasajesCategoria()">Obtener todos los pasajes segun categoria</button>
+            </div>
+            <div class="col-12 col-md-12 p-4">
+                <table class="table table-responsive table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">precio Pasaje</th>
+                        <th scope="col">categoria Pasajero</th>
+                        <th scope="col">fecha de Compra</th>
+                        <th scope="col">pasajero</th>
+                        <th scope="col">Acciones</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pas of pasajes">
+                        
+                        <td>{{pas.precioPasaje}}</td>
+                        <td>{{pas.categoriaPasajero}}</td>
+                        <td>{{pas.fechaCompra}}</td>
+                        <td>{{pas.pasajero.nombre}}{{pas.pasajero.apellido}}</td>
+                        <td>
+                            <button type="button" class="btn btn-secondary" (click)="eliminarPasaje(pas)">Borrar</button>
+                            <button type="button" class="btn btn-secondary" (click)="editarPasaje(pas)">EditarPasajero</button>  
+                          </td>
+                        
+                      </tr>
+                    </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>

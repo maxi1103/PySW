@@ -1,0 +1,31 @@
+<app-header></app-header>
+<main>
+    <div class="container p-4">
+        <div class="row">
+            <div class="colum 12"> 
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="{{libro.imagen}}" class="d-block w-100" alt="..." style="width: 100px; height: 900px;">
+                        <div class="carousel-caption d-none d-md-block bg-dark ">
+                          <h3 class="text-light font-weight-bold">{{libro.titulo}}</h3>
+                          <p  class="text-light font-weight-bold">{{libro.descripcion}}</p>
+                        </div>
+                      </div>
+                      
+                      
+                    </div>
+                    <button class="carousel-control-prev"  type="button" (click)="anterior()">
+                      <span class="carousel-control-prev-icon bg-dark p-3" aria-hidden="true"></span>
+                      <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"  (click)="siguiente()">
+                      <span class="carousel-control-next-icon bg-dark p-3" aria-hidden="true"></span>
+                      <span class="visually-hidden">Siguiente</span>
+                    </button>
+                  </div>
+            </div>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>

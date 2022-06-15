@@ -1,0 +1,109 @@
+<app-header></app-header>
+<main>
+    <div class="container p-4">
+        <div class="row">
+          <div class="d-none d-md-table col-0 col-md-8"> 
+          <table class="table table-bordered table-responsive ">
+              <thead> 
+                  <td colspan="4" class="text-center fw-bold bg-info">Conversor de Divisas</td>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col"><img src="assets/img/flag1.ico" style="height: 20px; width: 40px;" alt=""></th>
+                  <th scope="col"><img src="assets/img/flag2.ico" style="height: 20px; width: 40px;" alt=""></th>
+                  <th scope="col"><img src="assets/img/flag3.ico" style="height: 20px; width: 40px;" alt=""></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><img src="assets/img/flag1.ico" style="height: 20px; width: 40px;" alt="">  1 USD</th>
+                  <td>1<br>1</td>
+               <!--    <td>{{monedas[0].value}}<br>{{monedas[1].value}}</td>
+                  <td>{{monedas[2].value}}<br>{{monedas[3].value}}</td> -->
+                </tr>
+                <tr>
+                  <th scope="row"><img src="assets/img/flag2.ico" style="height: 20px; width: 40px;" alt="">  1 ARG</th>
+            <!--       <td>{{monedas[1].value}}<br>{{monedas[0].value}}</td>
+                  <td>1<br>1</td>
+                  <td>{{monedas[4].value}}<br>{{monedas[5].value}}</td> -->
+                </tr>
+                <tr>
+                  <th scope="row"><img src="assets/img/flag3.ico" style="height: 20px; width: 40px;" alt="">  1 EUR</th>
+                  <!-- <td>{{monedas[3].value}}<br>{{monedas[2].value}}</td>
+                  <td>{{monedas[5].value}}<br>{{monedas[4].value}}</td> -->
+                  <td>1<br>1</td>
+              </tr> 
+              </tbody>
+            </table>
+          </div>
+            <form class="col-12 col-sm-12 col-md-4 border border-dark p-4" #transaccionForm="ngForm">
+              <fieldset>
+                  <legend class="text-center">Conversor de Divisas</legend>
+              </fieldset>
+              <div class="mb-3">
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="cantidad" placeholder="cantidad" [(ngModel)]="transaccion.cantidadOrigen" name="cantidad" #cantidad="ngModel" min="1" required>
+                <div class="alert alert-danger" *ngIf="cantidad.invalid &&(cantidad.dirty||cantidad.touched)">
+                  <div *ngIf="cantidad.errors?.['required']">
+                    No introduciste la cantidad
+                  </div>
+                  <div *ngIf="cantidad.errors?.['min']">
+                    Ingresa un monto valido
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="de" class="form-label">De: </label>
+                <select id="de" class="form-select" aria-label="Default select example " [(ngModel)]="transaccion.monedaOrigen" name="de" #de="ngModel" required>
+                  <option selected disabled hidden>Seleecione Moneda</option>
+                  <option value="USD">USD Dolares EEUU</option>
+                    <option value="ARS">ARS Pesos Argentitos</option>
+                    <option value="EUR">EUR Euros</option>
+                    <option value="BRL">BRL Real Brasileño</option>
+                    <option value="GBP">GBP Libra Esterlina</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="de.invalid &&(de.dirty||de.touched)">
+                  <div *ngIf="de.errors?.['required']">
+                    Tienes que seleccionar una moneda de origen
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="mb-3">
+                  <label for="a" class="form-label">A: </label>
+                  <select id="a" class="form-select" aria-label="Default select example" [(ngModel)]="transaccion.monedaDestino" name="a" #a="ngModel" required> 
+                    <option selected disabled hidden>Seleecione Moneda</option>
+                    <option value="USD">USD Dolares EEUU</option>
+                    <option value="ARS">ARS Pesos Argentitos</option>
+                    <option value="EUR">EUR Euros</option>
+                    <option value="BRL">BRL Real Brasileño</option>
+                    <option value="GBP">GBP Libra Esterlina</option>
+                  </select>
+                  <div class="alert alert-danger" *ngIf="a.invalid &&(a.dirty||a.touched)">
+                    <div *ngIf="a.errors?.['required']">
+                      Tienes que seleccionar una moneda a convertir
+                    </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="e-mail" [(ngModel)]="transaccion.emailCliente" #email="ngModel" name="email" required >
+                <div class="alert alert-danger" *ngIf="email.invalid &&(email.dirty||email.touched)">
+                    <div *ngIf="email.errors?.['required']">
+                      No introduciste el Email
+                    </div>
+                </div>  
+              </div>
+              <div class="mb-3">
+                <label for="monto" class="form-label">Monto: </label>
+                <input type="number" class="form-control" id="monto" [(ngModel)]="transaccion.cantidadDestino" #monto="ngModel" name="monto" disabled >
+              </div>
+              <div class="mb-3">
+                <label for="tasa" class="form-label">Tasa de Conversion: </label>
+                <input type="number" class="form-control" id="tasa" [(ngModel)]="transaccion.tasaConversion" #tasa="ngModel" name="tasa" disabled >
+              </div>
+              <button type="submit" class="btn btn-warning w-100" (click)="convertir()" [disabled]="transaccionForm.invalid">Comvertir</button>
+            </form>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>
