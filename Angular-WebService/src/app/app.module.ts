@@ -14,6 +14,7 @@ import { Punto2Component } from './components/punto2/punto2.component';
 import { Punto2FormComponent } from './components/punto2-form/punto2-form.component';
 import { Punto3Component } from './components/punto3/punto3.component';
 import { Punto3FormComponent } from './components/punto3-form/punto3-form.component';
+import { NuevoComponent } from './componets/nuevo/nuevo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { Punto3FormComponent } from './components/punto3-form/punto3-form.compon
     Punto2FormComponent,
     Punto3Component,
     Punto3FormComponent,
+    NuevoComponent,
   ],
   imports: [
     AlifeFileToBase64Module,
